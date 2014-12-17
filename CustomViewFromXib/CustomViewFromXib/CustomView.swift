@@ -19,6 +19,7 @@ import UIKit
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var button: UIButton!
     @IBAction func buttonPressed(sender: AnyObject) {
+        // do something
     }
 
     @IBInspectable var image: UIImage? {

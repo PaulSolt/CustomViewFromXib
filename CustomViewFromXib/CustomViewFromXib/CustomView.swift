@@ -18,8 +18,9 @@ import UIKit
     @IBOutlet weak var label: UILabel!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var button: UIButton!
-    @IBAction func buttonPressed(sender: AnyObject) {
-        // do something
+    
+    @IBAction func buttonPressed(_ sender: Any) {
+        print("Pressed button!")
     }
 
     @IBInspectable var image: UIImage? {
@@ -30,7 +31,6 @@ import UIKit
             imageView.image = image
         }
     }
-    
     
     override init(frame: CGRect) {
         // 1. setup any properties here
@@ -50,6 +50,7 @@ import UIKit
         
         // 3. Setup view from .xib file
         xibSetup()
+//        self.view = loadViewFromNib() as! CustomView
     }
     
     func xibSetup() {
@@ -59,18 +60,18 @@ import UIKit
         view.frame = bounds
         
         // Make the view stretch with containing view
-        view.autoresizingMask = [UIViewAutoresizing.FlexibleWidth, UIViewAutoresizing.FlexibleHeight]
+        view.autoresizingMask = [UIViewAutoresizing.flexibleWidth, UIViewAutoresizing.flexibleHeight]
         
         // Adding custom subview on top of our view (over any custom drawing > see note below)
         addSubview(view)
     }
     
     func loadViewFromNib() -> UIView {
-        let bundle = NSBundle(forClass: self.dynamicType)
+        let bundle = Bundle(for: type(of:self))
         let nib = UINib(nibName: "CustomView", bundle: bundle)
         
         // Assumes UIView is top level and only object in CustomView.xib file
-        let view = nib.instantiateWithOwner(self, options: nil)[0] as! UIView
+        let view = nib.instantiate(withOwner: self, options: nil)[0] as! UIView
         return view
     }
     

@@ -22,6 +22,32 @@ import UIKit
     @IBAction func buttonPressed(_ sender: Any) {
         print("Pressed button!")
     }
+    
+    @IBInspectable var title: String? {
+        get {
+            return label.text
+        }
+        set(title) {
+            label.text = title
+        }
+    }
+    
+    // NOTE: THIS DOESN"T UPDATE in storyboard
+    @IBInspectable var buttonTitle: String? {
+        get {
+            return button.title(for: .normal)
+        }
+        set(title) {
+            button.setTitle(title, for: .normal)
+            button.sizeToFit()
+            
+//            button.frame = CGRect(x: 0, y: 0, width: 200, height: 60)
+//            button.setNeedsLayout()
+//            button.setNeedsDisplay()
+//            button.setNeedsUpdateConstraints()
+        }
+    }
+
 
     @IBInspectable var image: UIImage? {
         get {
@@ -53,38 +79,51 @@ import UIKit
 //        self.view = loadViewFromNib() as! CustomView
     }
     
+    override func prepareForInterfaceBuilder() {
+        print("DOG")
+//        xibSetup()
+//        self.buttonTitle = "user setting"
+        
+        /// BUTTON elements are not initilized in the beginning?
+        print("Button title: \(button.title(for: .normal))")
+//        button.setTitle("BLAH", for: .normal)
+//        button.setTitle("BLAH", for: .highlighted)
+//        button.setTitle("BLAH", for: .disabled)
+//        button.setTitle("BLAH", for: .focused)
+//        button.setTitle("BLAH", for: .reserved)
+//        xibSetup()
+    }
+    
     func xibSetup() {
-        view = loadViewFromNib()
+        
+        guard let view = loadViewFromNib() else {
+            print("Error loading UI")
+            let label1 = UILabel()
+            label1.text = "ERROR!:"
+            label1.font = UIFont.systemFont(ofSize: 20)
+            label1.sizeToFit()
+            label1.center = CGPoint(x: 100, y: 100)
+            addSubview(label1)
+            return
+        }
         
         // use bounds not frame or it'll be offset
         view.frame = bounds
         
         // Make the view stretch with containing view
-        view.autoresizingMask = [UIViewAutoresizing.flexibleWidth, UIViewAutoresizing.flexibleHeight]
+        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         
         // Adding custom subview on top of our view (over any custom drawing > see note below)
         addSubview(view)
     }
     
-    func loadViewFromNib() -> UIView {
+    func loadViewFromNib() -> UIView? {
         let bundle = Bundle(for: type(of:self))
         let nib = UINib(nibName: "CustomView", bundle: bundle)
         
         // Assumes UIView is top level and only object in CustomView.xib file
-        let view = nib.instantiate(withOwner: self, options: nil)[0] as! UIView
+        let view = nib.instantiate(withOwner: self, options: nil)[0] as? UIView
         return view
     }
-    
-    
-    /*
-    // Only override drawRect: if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func drawRect(rect: CGRect) {
-    
-    // If you add custom drawing, it'll be behind any view loaded from XIB
-    
-    
-    }
-    */
     
 }

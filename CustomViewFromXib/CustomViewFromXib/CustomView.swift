@@ -8,7 +8,7 @@
 
 import UIKit
 
-@IBDesignable class CustomView: UIView {
+@IBDesignable class CustomView: UIView, LoadViewFromNib {
     
     // Our custom view from the XIB file
     var view: UIView!
@@ -54,7 +54,7 @@ import UIKit
     }
     
     func xibSetup() {
-        view = loadViewFromNib()
+        view = loadViewFromNib(withName: "CustomView")
         
         // use bounds not frame or it'll be offset
         view.frame = bounds
@@ -64,15 +64,6 @@ import UIKit
         
         // Adding custom subview on top of our view (over any custom drawing > see note below)
         addSubview(view)
-    }
-    
-    func loadViewFromNib() -> UIView {
-        let bundle = Bundle(for: type(of:self))
-        let nib = UINib(nibName: "CustomView", bundle: bundle)
-        
-        // Assumes UIView is top level and only object in CustomView.xib file
-        let view = nib.instantiate(withOwner: self, options: nil)[0] as! UIView
-        return view
     }
     
     

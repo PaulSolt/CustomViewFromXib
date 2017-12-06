@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		023ADA8E1FD81AD500174055 /* LoadViewFromNib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023ADA8D1FD81AD500174055 /* LoadViewFromNib.swift */; };
 		BD79BC5C1A38E84F006E45A3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD79BC5B1A38E84F006E45A3 /* AppDelegate.swift */; };
 		BD79BC5E1A38E84F006E45A3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD79BC5D1A38E84F006E45A3 /* ViewController.swift */; };
 		BD79BC611A38E84F006E45A3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD79BC5F1A38E84F006E45A3 /* Main.storyboard */; };
@@ -29,6 +30,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		023ADA8D1FD81AD500174055 /* LoadViewFromNib.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadViewFromNib.swift; sourceTree = "<group>"; };
 		BD79BC561A38E84F006E45A3 /* CustomViewFromXib.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CustomViewFromXib.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD79BC5A1A38E84F006E45A3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BD79BC5B1A38E84F006E45A3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -92,6 +94,7 @@
 				BD79BC621A38E84F006E45A3 /* Images.xcassets */,
 				BD79BC641A38E84F006E45A3 /* LaunchScreen.xib */,
 				BD79BC591A38E84F006E45A3 /* Supporting Files */,
+				023ADA8D1FD81AD500174055 /* LoadViewFromNib.swift */,
 			);
 			path = CustomViewFromXib;
 			sourceTree = "<group>";
@@ -225,6 +228,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				023ADA8E1FD81AD500174055 /* LoadViewFromNib.swift in Sources */,
 				BD79BC7E1A38F309006E45A3 /* CustomView.swift in Sources */,
 				BD79BC5E1A38E84F006E45A3 /* ViewController.swift in Sources */,
 				BD79BC5C1A38E84F006E45A3 /* AppDelegate.swift in Sources */,

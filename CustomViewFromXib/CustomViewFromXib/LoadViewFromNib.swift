@@ -9,15 +9,14 @@
 import UIKit
 
 protocol LoadViewFromNib {
-    
-    func loadViewFromNib(withName: String) -> UIView?
+    func loadViewFromNib(withName: String) -> UIView
 }
 
 extension LoadViewFromNib {
     
-    func loadViewFromNib(withName name: String) -> UIView? {
+    func loadViewFromNib(withName name: String) -> UIView {
         let bundle = Bundle(for: type(of: self) as! AnyClass)
         let nib = UINib(nibName: name, bundle: bundle)
-        return nib.instantiate(withOwner: self, options: nil).first as? UIView
+        return nib.instantiate(withOwner: self, options: nil).first as! UIView
     }
 }
